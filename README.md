@@ -47,7 +47,7 @@ Administrator permissions are required in Windows.
 4. using the **Registry Editor** application (`regedit.exe`) add in
 `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION`
 `picasa3.exe` `dword:00002af9`
-You can achieve the same by running [Picasa3FEATURE_BROWSER_EMULATION.reg]
+You can achieve the same by running [Picasa3FEATURE_BROWSER_EMULATION.reg](https://raw.githubusercontent.com/mpistora/PicasaOpenMap/main/Picasa3FEATURE_BROWSER_EMULATION.reg)
 
 ## Future
 Leaflet currently [supports IE 9–11](https://leafletjs.com/#features). However, this may change in the next version, so the library is not downloaded from the server, but installed locally in version 1.9.4. However, an Internet connection is still necessary, for downloading map tiles from the OpenStreetMap or Esri servers. If they stop working, this can be resolved by editing the URL in `picasa_geopanel_bin_v3.js`.
