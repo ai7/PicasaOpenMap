@@ -14,40 +14,42 @@ This is described variously on the web, e.g. at:
 
 Once the last version of the API that still supported Internet Explorer disappeared from Google's servers, it stopped working completely.
 
-From the above modifications, it can be seen that the HTML page and javascript are in the Picasa installation, the files are in the folder `C:\Program Files (x86)\Google\Picasa3\runtime\geotag`:
+From the above modifications, it can be seen that the HTML page and JavaScript are in the Picasa installation, the files are in the folder `C:\Program Files (x86)\Google\Picasa3\runtime\geotag`:
 * `geopanelscript_v3.html`
 * `picasa_geopanel_bin_v3.js`
 
 So it is theoretically possible to modify them to work without the Google Maps JavaScript API.
 
-At first, I considered using the JavaScript API for the great [Mapy.cz](https://mapy.cz/). However, it turned out that Mapy.cz switched to the REST API and various JavaScript map libraries can be [used](https://developer.mapy.cz/js-api/prechod-z-js-sdk-na-nove-rest-api/). And that the most common choice for simple solutions is [Leaflet](https://leafletjs.com/) .
+At first, I considered using the JavaScript API for the great [Mapy.cz](https://mapy.cz/). However, it turned out that Mapy.cz switched to the REST API and various JavaScript map libraries can be [used](https://developer.mapy.cz/js-api/prechod-z-js-sdk-na-nove-rest-api/). And that the most common choice for simple solutions is **[Leaflet](https://leafletjs.com/)**.
 
 Another complication is that not only Google Maps, but also Mapy.cz, require a registered client, identified in queries using the API key.
-For the source of map tiles, I chose the basic [OpenStreetMap](https://www.openstreetmap.org/), which is freely available.
-According to [demo](https://leaflet-extras.github.io/leaflet-providers/preview/), I chose [Esri.WorldImagery](https://www.esriuk.com/en-gb/content/products?esri-world-imagery-service) for the satellite map and added a switch.
+For the source of map tiles, I chose the basic **[OpenStreetMap](https://www.openstreetmap.org/)**, which is freely available.
+According to [demo](https://leaflet-extras.github.io/leaflet-providers/preview/), I chose **[Esri.WorldImagery](https://www.esriuk.com/en-gb/content/products?esri-world-imagery-service)** for the satellite map and added a switch.
 
-The Javascript library was in compressed form, but after reformatting it is readable. It is non-trivial and moreover old Javascript, which I had no experience with. [ChatGPT](https://chatgpt.com/) helped me a little. I commented out the original lines with `google.maps` and added new ones for Leaflet. I revived the basic functionality for:
+The JavaScript library was in compressed form, but after reformatting it is readable. It is non-trivial and moreover old JavaScript, which I had no experience with. [ChatGPT](https://chatgpt.com/) helped me a little. I commented out the original lines with `google.maps` and added new ones for Leaflet.
+I revived the basic functionality for:
 * displaying tags of selected photos in the map
 * displaying a preview of a photo after clicking on a tag
 * selecting a photo in Picasa after clicking on a preview of a photo next to a tag
+
 I did not revive the options for searching for a place, writing coordinates to photos, moving to another place and deleting coordinates, i.e. "geotagging". Today it is not as important as in the days of Picasa, because we take pictures with our mobile phones and the coordinates are in the photos from the moment they were created. But it could probably be fine-tuned. Someone can try it.
 
 ## Installation
 Administrator permissions are required in Windows.
-1. download [PicasaOpenMap.zip]
+1. download [PicasaOpenMap.zip](https://github.com/mpistora/PicasaOpenMap/releases/download/v1.0/PicasaOpenMap.zip)
 2. in the folder `C:\Program Files (x86)\Google\Picasa3\runtime\geotag`, back up or rename the original files:
 * `geopanelscript_v3.html`
 * `picasa_geopanel_bin_v3.js`
 3. put the files from `PicasaOpenMap.zip` into the folder `C:\Program Files (x86)\Google\Picasa3\runtime\geotag`, they are:
 * `geopanelscript_v3.html` - a modified page that uses Leaflet from a local file instead of the Google Maps JavaScript API
-* `picasa_geopanel_bin_v3.js` - modified javascript for Leaflet and OpenStreetMap/Esri.WorldImagery
+* `picasa_geopanel_bin_v3.js` - modified JavaScript for Leaflet and OpenStreetMap/Esri.WorldImagery
 * `leaflet.js` - this is the minified Leaflet JavaScript code from version [1.9.4](https://leafletjs.com/download.html)
 * `leaflet.css` - this is the stylesheet for Leaflet
 * `images\layers.png` - icon for the layer switcher
-4. using the **Registry Editor** application (`regedit.exe`) add in
-`HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION`
-`picasa3.exe` `dword:00002af9`
-You can achieve the same by running [Picasa3FEATURE_BROWSER_EMULATION.reg](https://raw.githubusercontent.com/mpistora/PicasaOpenMap/main/Picasa3FEATURE_BROWSER_EMULATION.reg)
+4. using the Registry Editor application (`regedit.exe`) navigate to\
+`HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION`\
+create a new `DWORD` entry with name: `picasa3.exe` and hexadecimal value: `2af9` (decimal: 11001).\
+You can achieve the same by running [Picasa3FEATURE_BROWSER_EMULATION.reg](https://github.com/mpistora/PicasaOpenMap/releases/download/v1.0/Picasa3FEATURE_BROWSER_EMULATION.reg).
 
 ## Future
 Leaflet currently [supports IE 9–11](https://leafletjs.com/#features). However, this may change in the next version, so the library is not downloaded from the server, but installed locally in version 1.9.4. However, an Internet connection is still necessary, for downloading map tiles from the OpenStreetMap or Esri servers. If they stop working, this can be resolved by editing the URL in `picasa_geopanel_bin_v3.js`.
