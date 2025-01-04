@@ -35,6 +35,7 @@ I revived the basic functionality for:
 I did not revive the options for searching for a place, writing coordinates to photos, moving to another place and deleting coordinates, i.e. "geotagging". Today it is not as important as in the days of Picasa, because we take pictures with our mobile phones and the coordinates are in the photos from the moment they were created. But it could probably be fine-tuned. Someone can try it.
 
 ## Installation
+This assumes you are using the latest version of Picasa for Windows `3.9.141.259`. If not, download [picasa39-setup.exe](https://archive.org/download/picasa-3.9.141.259/picasa39-setup.exe) and install it.\
 Administrator permissions are required in Windows.
 1. download [PicasaOpenMap.zip](https://github.com/mpistora/PicasaOpenMap/releases/download/v1.0/PicasaOpenMap.zip)
 2. in the folder `C:\Program Files (x86)\Google\Picasa3\runtime\geotag`, back up or rename the original files:
