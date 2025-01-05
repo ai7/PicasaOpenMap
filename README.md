@@ -37,7 +37,7 @@ I did not revive the options for searching for a place, writing coordinates to p
 ## Installation
 This assumes you are using the latest version of Picasa for Windows `3.9.141.259`. If not, download [picasa39-setup.exe](https://archive.org/download/picasa-3.9.141.259/picasa39-setup.exe) and install it.\
 Administrator permissions are required in Windows.
-1. download [PicasaOpenMap.zip](https://github.com/mpistora/PicasaOpenMap/releases/download/v1.0/PicasaOpenMap.zip)
+1. download [PicasaOpenMap.zip](https://github.com/mpistora/PicasaOpenMap/releases/download/v1.1/PicasaOpenMap.zip)
 2. in the folder `C:\Program Files (x86)\Google\Picasa3\runtime\geotag`, back up or rename the original files:
 * `geopanelscript_v3.html`
 * `picasa_geopanel_bin_v3.js`
