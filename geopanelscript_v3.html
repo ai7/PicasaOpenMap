@@ -7,7 +7,7 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <title>Google Map for Picasa Locations</title>
-  <link rel="stylesheet" type="text/css" href="picasa_infowindow.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="picasa_infowindow.css" /> -->
   <style>
     html,
     body {
@@ -59,6 +59,76 @@
       top: 12px;
       left: 34px;
     }
+/* picasa_infowindow.css file did not load on some computers via the link tag, so we will insert it here */ 
+a {
+  text-decoration:none;
+}
+a:link {
+  color:#4488ff;
+  text-decoration:none;
+}
+a:visited {
+  color:#4488ff;
+  text-decoration:none;
+}
+
+a img { border: none ; }
+
+.info_window_bottom_image {
+  background-color:#ffffff;
+  border:1px #cdcdcd solid;
+}
+.info_window_title {
+  /* background-color:#aaaaff;*/  /* default white background for now */
+  font-family:Arial;
+  font-weight:bold;
+  font-size:10pt;
+  border-bottom:1px solid #bbbbbb;
+  text-align:center;
+  white-space:normal;
+}
+.info_window_close {
+  float:right;
+  padding-right:6px;
+  padding-top:1px;
+  border:0;
+}
+.info_window_footer {
+  font-family:Arial;
+  font-style:normal;
+  font-size:11px;
+  font-weight:lighter;
+  border-top:1px solid #bbbbbb;
+  text-indent:5px;
+}
+.info_window_footer_button {
+  font-family:Arial;
+  font-style:normal;
+  font-size:11px;
+  font-weight:normal;
+  margin: 1px;
+  padding:1px;
+  border:1px solid #bbbbbb;
+  text-align:center;
+  cursor:pointer;
+  width:92%;
+  white-space:normal;
+}
+.info_window_thumb {
+  text-align:center;
+  vertical-align:middle;
+  margin-top:5px;
+}
+.info_window_controls {
+  text-align:center;
+  vertical-align:bottom;
+  border-top:1px solid #bbbbbb;
+}
+.info_window_footerblock {
+  display:block;
+  width:50px;
+  height:100%;
+}
   </style>
   <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.0.0/webcomponents-bundle.js"></script> -->
   <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?client=google-picasa-client&sensor=false&v=3.53"></script> -->
